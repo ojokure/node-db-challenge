@@ -5,7 +5,7 @@ const Tasks = require("../Projects/tasks-model");
 const tasksRouter = express.Router();
 
 tasksRouter.get("/", (req, res) => {
-  Tasks.find()
+  Tasks.getTasks()
     .then(tasks => {
       res.json(tasks);
     })
