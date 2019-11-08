@@ -10,11 +10,27 @@ projectsRouter.get("/", (req, res) => {
       res.json(projects);
     })
     .catch(err => {
-      res.status(500).json({ 
-          err, 
-          message: "Failed to get projects" });
+      res.status(500).json({
+        err,
+        message: "Failed to get projects"
+      });
     });
 });
 
+projectsRouter.post("/", (req, res) => {
+  Projects.add(req.body)
+    .then(project => {
+      project.completed === 0
+        ? (project.completed = false)
+        : (project.completed = true);
+      res.status(200).json(project);
+    })
+    .catch(err => {
+      res.status(500).json({
+        err,
+        message: "Failed to post project"
+      });
+    });
+});
 
 module.exports = projectsRouter;
