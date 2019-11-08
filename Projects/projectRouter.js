@@ -2,9 +2,9 @@ const express = require("express");
 
 const Projects = require("../Projects/projects-model");
 
-const projectRouter = express.Router();
+const projectsRouter = express.Router();
 
-projectRouter.get("/", (req, res) => {
+projectsRouter.get("/", (req, res) => {
   Projects.find()
     .then(projects => {
       res.json(projects);
@@ -15,3 +15,6 @@ projectRouter.get("/", (req, res) => {
           message: "Failed to get projects" });
     });
 });
+
+
+module.exports = projectsRouter;

@@ -2,9 +2,9 @@ const express = require("express");
 
 const Tasks = require("../Projects/tasks-model");
 
-const taskRouter = express.Router();
+const tasksRouter = express.Router();
 
-taskRouter.get("/", (req, res) => {
+tasksRouter.get("/", (req, res) => {
   Tasks.find()
     .then(tasks => {
       res.json(tasks);
@@ -16,3 +16,5 @@ taskRouter.get("/", (req, res) => {
       });
     });
 });
+
+module.exports = tasksRouter;

@@ -2,9 +2,9 @@ const express = require("express");
 
 const Resources = require("../Projects/resources-model");
 
-const resourceRouter = express.Router();
+const resourcesRouter = express.Router();
 
-resourceRouter.get("/", (req, res) => {
+resourcesRouter.get("/", (req, res) => {
   Resources.find()
     .then(resources => {
       res.json(resources);
@@ -15,3 +15,5 @@ resourceRouter.get("/", (req, res) => {
           message: "Failed to get resources" });
     });
 });
+
+module.exports = resourcesRouter;
