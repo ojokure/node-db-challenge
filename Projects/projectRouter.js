@@ -7,6 +7,13 @@ const projectsRouter = express.Router();
 projectsRouter.get("/", (req, res) => {
   Projects.find()
     .then(projects => {
+      projects.map(project => {
+        if (project.completed === 0) {
+          return (project.completed = false);
+        } else {
+          return (project.completed = true);
+        }
+      });
       res.json(projects);
     })
     .catch(err => {

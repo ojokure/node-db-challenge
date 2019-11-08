@@ -7,7 +7,14 @@ const tasksRouter = express.Router();
 tasksRouter.get("/", (req, res) => {
   Tasks.getTasks()
     .then(tasks => {
-      res.json(tasks);
+      tasks.map(task => {
+        if (task.completed === 0) {
+          return (task.completed = false);
+        } else {
+          return (task.completed = true);
+        }
+      });
+      res.status(200).json(tasks);
     })
     .catch(err => {
       res.status(500).json({
@@ -20,6 +27,9 @@ tasksRouter.get("/", (req, res) => {
 tasksRouter.post("/", (req, res) => {
   Tasks.addTask(req.body)
     .then(task => {
+      task.completed === 0
+        ? (task.completed = false)
+        : (task.completed = true);
       res.status(200).json(task);
     })
     .catch(err => {
