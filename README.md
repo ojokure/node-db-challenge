@@ -53,7 +53,7 @@ foreign key
 
 - [ ] What do we need in order to have a _many to many_ relationship between two tables.
 
-foreign keys
+One to Many relationship and foreign keys
 
 ## Minimum Viable Product
 
