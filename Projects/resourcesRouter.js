@@ -7,12 +7,26 @@ const resourcesRouter = express.Router();
 resourcesRouter.get("/", (req, res) => {
   Resources.find()
     .then(resources => {
-      res.json(resources);
+      res.status(200).json(resources);
     })
     .catch(err => {
-      res.status(500).json({ 
-          err, 
-          message: "Failed to get resources" });
+      res.status(500).json({
+        err,
+        message: "Failed to get resources"
+      });
+    });
+});
+
+resourcesRouter.post("/", (req, res) => {
+  Resources.add(req.body)
+    .then(resource => {
+      res.status(200).json(resource);
+    })
+    .catch(err => {
+      res.status(500).json({
+        err,
+        message: "Failed to get resources"
+      });
     });
 });
 
