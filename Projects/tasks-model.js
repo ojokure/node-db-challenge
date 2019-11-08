@@ -6,5 +6,5 @@ module.exports = {
 };
 
 function find() {
-  return db("projects");
+  return db("tasks");
 }
